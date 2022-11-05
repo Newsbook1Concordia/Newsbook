@@ -1,34 +1,45 @@
-import logo from './logo.svg';
-import {useEffect} from "react";
-import jwt_Decode from "jwt-decode";
 import './App.css';
+import React, { useState } from 'react'
+import NavBar from './components/NavBar';
+import News from './components/News';
+import G_login from './components/Googlebutton';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
 
-
-
-function App() {
-
-  function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID token : " + response.credential);
-    var userObject = jwt_Decode(response.credential);
-    console.log(userObject);
-  }
-
-  useEffect(() => {
-  /*global google*/
-    google.accounts.id.initialize({
-      client_id : '138640372450-e85pkrmnflipgal3uf7rosjok6vc6fov.apps.googleusercontent.com',
-      callback : handleCallbackResponse
-    });
-
-    google.accounts.id.renderButton(
-        document.getElementById("signInDiv"),
-        {theme:"outline",size:"large"}
-    );
-    },[]);
-  return (
-    <div className="App">
-      <div id = "signInDiv"></div>
-    </div>
-  );
+const App = ()=> {
+  const pageSize = 5;
+  const apiKey = process.env.REACT_APP_NEWS_API
+  const [progress, setProgress] = useState(0)
+ 
+  
+    return (
+      
+      <div>
+        
+                 
+                
+        <Router>
+        <NavBar/> 
+        <LoadingBar
+        height={3}
+        color='#f11940'
+        progress={progress} 
+      />
+        <Switch>
+          <Route exact path="/"><News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="ca" category="general"/></Route> 
+          <Route exact path="/business"><News setProgress={setProgress} apiKey={apiKey} key="business" pageSize={pageSize} country="ca" category="business"/></Route> 
+          <Route exact path="/entertainment"><News setProgress={setProgress} apiKey={apiKey} key="entertainment" pageSize={pageSize} country="ca" category="entertainment"/></Route> 
+          <Route exact path="/general"><News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="ca" category="general"/></Route> 
+          <Route exact path="/health"><News setProgress={setProgress} apiKey={apiKey} key="health" pageSize={pageSize} country="ca" category="health"/></Route> 
+          <Route exact path="/science"><News setProgress={setProgress} apiKey={apiKey} key="science" pageSize={pageSize} country="ca" category="science"/></Route> 
+          <Route exact path="/sports"><News setProgress={setProgress} apiKey={apiKey} key="sports" pageSize={pageSize} country="ca" category="sports"/></Route> 
+          <Route exact path="/technology"><News setProgress={setProgress} apiKey={apiKey} key="technology" pageSize={pageSize} country="ca" category="technology"/></Route> 
+        </Switch>
+        </Router>
+      </div>
+    )
+ 
 }
+
 export default App;
+
