@@ -133,7 +133,7 @@ def business(request): #########1st Category wise
     country=cat.Country
     print(country)
     
-   
+         
     # if request.method == 'POST' :
     #     country = request.POST.get('country')
     
