@@ -1,17 +1,47 @@
+"""Ashish08 URL Configuration
 
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
 from django.urls import include, path
-
+# from django.conf.urls import re_path
 from django.contrib import admin
-from django.urls import path
+from django.views.static import serve
+from django.conf import settings
+from django.conf.urls.static import static
 
-from . import views
+# from projects.views import send_friend_request
+# from projects.views import friend_requests
+# from projects.views import accept_friend_request
+# from projects.views import remove_friend
+	
+	
+	
+
 
 urlpatterns = [
-    path('', views.login, name='login'),
-    path('news/', views.news, name='news'),
-    path('category/',views.category, name='category'),
-    path('profile/',views.profile, name='profile'),
-    path('news/Business/',views.business, name='business')
+    path('admin/', admin.site.urls),
+    path('', include('projects.urls')),
+    # path('friend_remove/', remove_friend, name='remove-friend'), # TODO: ADD THIS LINE.
+    # path('friend_request/', send_friend_request, name='friend-request'),
     
 
+    path('accounts/', include('allauth.urls')),
+    #re_path(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT }), 
+   # re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+    
 ]
+#urlpatterns = urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+
+
+

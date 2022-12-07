@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
+	
 	<link rel="stylesheet" href="../static/category.css">
-	<link rel="stylesheet" href="../static/style.css">
+	
 
-  	<title>News =Book Category Selection Page</title>
+  	<title>NewsBook Category Selection Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -14,7 +15,13 @@
 		
   </head>
   <body>
-
+	
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		  <a class="dropdown-item" href="#">Action</a>
+		  <a class="dropdown-item" href="#">Another action</a>
+		  <a class="dropdown-item" href="#">Something else here</a>
+		</div>
+	  </div>
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row">
@@ -25,20 +32,21 @@
 				<div class="row justify-content-center">
 					<div class="col-md-6">
 						
-						
+						<h1>Welcome {{ user.socialaccount_set.all.0.extra_data.name }}</h1>
 						<form action="/news/" method="post">
 						{% csrf_token %}	
+						
 						<div class="wrap w-100">
 							<div class="heading-title mb-4 text-center">
 								<h3>Choose your preferred News Categories</h3>
 							</div>
-							<ul class="ks-cboxtags p-0 m-0">
+							<ul class="ks-cboxtags px-0 m-0">
 						    <li>
 						    	<input type="checkbox" name= "category"  id="checkboxOne" value="general">
 						    	<label for="checkboxOne">General</label>
 						    </li>
 						    <li>
-						    	<input type="checkbox" name= "category" id="checkboxTwo" value="business">
+						    	<input type="checkbox" name= "category" id="checkboxTwo" value="Business">
 						    	<label for="checkboxTwo">Business</label>
 						    </li>
 						    <li>
@@ -49,10 +57,7 @@
 						    	<input type="checkbox" name= "category" id="checkboxfour" value="science">
 						    	<label for="checkboxfour">Science</label>
 						    </li>
-							<li>
-						    	<input type="checkbox" name= "category" id="checkboxfive" value="business">
-						    	<label for="checkboxfive">Business</label>
-						    </li>
+							
 							<li>
 						    	<input type="checkbox" name= "category" id="checkboxsix" value="entertainment">
 						    	<label for="checkboxsix">Entertainment</label>
@@ -61,10 +66,22 @@
 						    	<input type="checkbox" name= "category" id="checkboxseven" value="technology">
 						    	<label for="checkboxseven">Technology</label>
 						    </li>
-							<li>
-						    	<input type="submit"  value="Submit">
-						
-						    </li>	
+							
+								<label for="lang">Country</label>
+      <select name="country" id="lang">
+        <option value="in">India</option>
+        <option value="ca">Canada</option>
+        <option value="us">US</option>
+        <option value="uk">UK</option>
+        
+      </select>
+	  <li>
+		<input type="submit"  value="Submit">
+
+	</li>	
+								</div>
+							  </div>
+							
 							
 						
 
@@ -85,9 +102,9 @@
 			</div>
 		</section>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    {% comment %} <script src="js/jquery.min.js"></script> {% endcomment %}
+    {% comment %} <script src="js/popper.js"></script> {% endcomment %}
+    {% comment %} <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script> {% endcomment %}
   </body>
 </html>

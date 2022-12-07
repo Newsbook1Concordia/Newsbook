@@ -14,6 +14,8 @@ import os
 
 from pathlib import Path
 
+# import django_heroku
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +31,10 @@ SECRET_KEY = 'django-insecure-b-olr-1aa$t_a^)f6y5n5+^nf0nonp897p)#!*btay_7)tvh1-
 DEBUG = True
 
 ALLOWED_HOSTS = []
+#'.vercel.app', '.now.sh'
 
+#'127.0.0.1','newsbook1.herokuapp.com'
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 
 # Application definition
 
@@ -98,8 +103,8 @@ STATICFILES_DIRS = [
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 STATIC_URL = "/static/"
-STATIC_ROOT = str(BASE_DIR / "staticfiles")
-# STATICFILES_DIRS = [str(BASE_DIR / "static")]
+# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -110,8 +115,15 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'Newsbook',
+    }
+}
 
-
+"""
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -166,20 +178,15 @@ SOCIALACCOUNT_PROVIDERS = {
         },
         'OAUTH_PKCE_ENABLED': True,
     }
+    
+    
+ 
+    
 }
 
-SOCIALACCOUNT_PROVIDERS = {
-'facebook': {
-    'METHOD': 'js_sdk',
-    'SCOPE': ['email', 'public_profile'],
-    'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-    'INIT_PARAMS': {'cookie': True},
-    'FIELDS': ['id','email'],
-    'EXCHANGE_TOKEN': True,
-    #'LOCALE_FUNC': 'path.to.callable',
-    'VERIFIED_EMAIL': True,
-    'VERSION': 'v2.12',
-  }
-}
 
 LOGIN_REDIRECT_URL='category'
+
+
+SOCIALACCOUNT_LOGIN_ON_GET=True
+

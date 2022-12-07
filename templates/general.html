@@ -3,25 +3,10 @@
 <html lang="en">
   <head>
     <!-- CSS only -->
-    <link rel="stylesheet" href="../static/business.css">
+    <link rel="stylesheet" href="../static/general.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <!-- Required meta tags -->
-	  <meta charset="utf-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<title>Newsbook</title>
-	<link rel="shortcut icon" type="image/png" href="favicon-32x32.png"/>
-	<link rel="stylesheet" type="text/css" href="main-style.css">
-	<link rel="stylesheet" type="text/css" href="widgetLiveScore.css">
-	<script src="jquery.js"></script>
-	<script src="jqueryGlobals.js"></script>
-	<script src="jquery.widgetLiveScore.js" type="text/javascript"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -131,7 +116,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/profile">Profile</a>
           </li>
@@ -157,10 +144,9 @@
         
         <div class="nav-item"> {{ user.socialaccount_set.all.0.extra_data.name }}</h1>
         </div>
-        <form action= 'search' class="d-flex" role="search" method="get">
-          <input class="form-control me-2" type="search" placeholder="Search" id="random" name="search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit" value="search">  Search  </button>
-          
+        <form action= '/news' class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
@@ -175,58 +161,24 @@
   <section class="py-5 text-center container ">
     <div class="row py-lg">
       <div class="col-lg-6 col-md-4 mx-auto">
-        <h1 class="fw-light">Trending News</h1>
-       <div class="container container-with-errors">
-
-        {% comment %} <script async src="https://www.scorebar.com/widget/" data-scorebar></script> {% endcomment %}
+        <h1 class="fw-light">General News</h1>
         <p class="lead text-muted"></p>
         <p>
-          {% comment %} <div id="wg-api-football-game"
-    data-host="v3.football.api-sports.io"
-    data-key=""
-    data-id="718243"
-    data-theme=""
-    data-refresh="15"
-    data-show-errors="false"
-    data-show-logos="true">
-</div> {% endcomment %}
-<script
-    type="module"
-    src="https://widgets.api-sports.io/2.0.3/widgets.js">
-</script>
-          <a href="http://localhost:3000/account/1/" class="btn btn-primary my-2">My Profile</a>
-          
+          <a href="/profile" class="btn btn-primary my-2">My Profile</a>
+          {% comment %} <a href="#" class="btn btn-secondary my-2">Friends</a> {% endcomment %}
         </p>
       </div>
     </div>
   </section>
   
-  <!-- Side navigation -->
-
+  
   
 
-
-<!-- Page content -->
-
-  
-{% comment %} <div class="sidenav">
-  <iframe src="https://www.scorebat.com/embed/league/fifa-world-cup/" frameborder="0" width="600" height="760" allowfullscreen allow='autoplay; fullscreen' style="width:100%;height:760px;overflow:hidden;display:block;" class="_scorebatEmbeddedPlayer_"></iframe><script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = 'https://www.scorebat.com/embed/embed.js?v=arrv'; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'scorebat-jssdk'));</script> {% endcomment %}
-
-
-  <div class="float-left-area">
-    <div class="inner-left">
     <div class="album py-5 bg-light">
     <div class="container">
-      
-
-
       <div class="row">
-     
-          {%for i in articles%}
+      {%for i in articles%}
       <div class="col-3">
-        
-        
-
       <div class="card-group">
           <div class="card shadow-sm"  width="100%" height="225">
             <img src = {{i.urlToImage}} class="bd-placeholder-img card-img-top"  width="300" height="200">
@@ -238,7 +190,7 @@
 
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary" onclick = window.open("{{i.url}}")>Details</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" >Like</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Like</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
                 </div>
                 <small class="text-muted">{{i.publishedAt}}</small>
@@ -259,35 +211,14 @@
                 <input type="radio" name="stars" id="star-e" value="1"/>
                 <label for="star-e"></label>
           </div>
-          
             </div>
-            
           </div>
-          
         </div>
-        
+       
       </div>
       {%endfor%}
-      
-    </div>
     </div>
   </div>
-
-</div>
-</div>
-
-</div>
-
-<div class="float-right-area">
-  <div class="inner-right">
-    <iframe src="https://www.scorebat.com/embed/league/fifa-world-cup/" frameborder="0" width="600" height="760" allowfullscreen allow='autoplay; fullscreen' style="width:100%;height:760px;overflow:hidden;display:block;" class="_scorebatEmbeddedPlayer_"></iframe><script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = 'https://www.scorebat.com/embed/embed.js?v=arrv'; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'scorebat-jssdk'));</script>
-
-  
-    
-</div>
-</div>
-
-<div class="clear-floated">
 
   
         {% comment %} <div class="col">

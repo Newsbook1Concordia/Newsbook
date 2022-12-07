@@ -54,8 +54,9 @@
     display: block;
     line-height: 1;
 }
+.py-5 { background-color: rgb(194, 221, 229); } 
 .ct-blog-content .ct-blog-date strong {
-    font-size: 25px;
+    font-size: 20px;
     color: rgb(20, 117, 175);  
 }
 .ct-blog-content .ct-blog-header {
@@ -84,3 +85,227 @@
 .btn-news.btn-contests a:hover {
     color: #000;
 }
+
+.navbar {
+    background-color: rgb(156, 199, 226);
+}
+/* use reverse flexbox to take advantage of flex-direction: reverse */
+.star-rating {
+  display: flex;
+  align-items: center;
+  width: 160px;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin: 40px auto;
+  position: relative;
+}
+/* hide the inputs */
+.star-rating input {
+  display: none;
+}
+/* set properties of all labels */
+.star-rating > label {
+  width: 30px;
+  height: 30px;
+  font-family: Arial;
+  font-size: 30px;
+  transition: 0.2s ease;
+  color: orange;
+}
+/* give label a hover state */
+.star-rating label:hover {
+  color: #ff69b4;
+  transition: 0.2s ease;
+}
+.star-rating label:active::before {
+  transform:scale(1.1);
+}
+
+/* set shape of unselected label */
+.star-rating label::before {
+  content: '\2606';
+  position: absolute;
+  top: 0px;
+  line-height: 26px;
+}
+/* set full star shape for checked label and those that come after it */
+.star-rating input:checked ~ label:before {
+  content:'\2605';
+}
+
+@-moz-document url-prefix() {
+  .star-rating input:checked ~ label:before {
+  font-size: 36px;
+  line-height: 21px;
+  }
+}
+
+
+.text-danger{
+    color:  red;
+}
+.label{
+    font-size: 9px;
+    text-transform: uppercase;
+    color: secondaryTextColor;
+    font-weight: 700;
+    letter-spacing: 0.095em;
+    margin-bottom:  space-size / 2;
+}
+.mb-05{
+    margin-bottom:  space-size / 2;
+}
+.mb-0{
+    margin-bottom: 0 !important;
+}
+.mb-1{
+    margin-bottom:  space-size;
+}
+.mt-1{
+    margin-top:  space-size;
+}
+.mt-2{
+    margin-top:  space-size-2;
+}
+.ml-1{
+    margin-left:  space-size;
+}
+.ml-2{
+    margin-left:  space-size-2;
+}
+.ml-3{
+    margin-left:  space-size-3;
+}
+.ml-4{
+    margin-left:  space-size-4;
+}
+.ml-5{
+    margin-left:  space-size-5;
+}
+
+.mr-1{
+    margin-right:  space-size;
+}
+.mr-2{
+    margin-right:  space-size-2;
+}
+.mr-3{
+    margin-right:  space-size-3;
+}
+.mr-4{
+    margin-right:  space-size-4;
+}
+.mr-5{
+    margin-right:  space-size-5;
+}
+html,body{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    background:  bodyBg;
+    color:  white;
+    width: 414px;
+    font-weight: 600;
+    margin:   space-size auto;
+    padding:  space-size-2;
+}
+*{
+    box-sizing: border-box;
+}
+.scoreboard {
+  background:  black;
+  margin-bottom:  space-size;
+  border-radius:  border-radius;
+
+
+
+  }
+    __name {
+    display: block;
+    width: 100px;
+  }
+
+    __nav {
+    border-top: 1px solid  borderColor;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0  space-size-2;
+    margin: 0;
+  }
+  .container {
+    display: flex;
+}
+
+.container1 {
+    flex: 1;
+    border: 2px solid yellow;
+}  
+
+.container2 {
+    margin-right: 20px;
+}
+
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 160px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Style page content */
+  .main {
+    margin-left: 160px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .float-left-area  {
+    width: 70%;
+    float: left;
+    }
+
+.float-right-area {
+    width: 30%;
+    float: left;
+    }
+
+.inner-left	  {
+    padding: 5px 5px 5px 5px;
+    margin-right: 10px;
+    border: #999999 1px solid;
+    min-height: 60px;
+    }
+
+.inner-right	  {
+    font-size: 11px;
+    padding: 5px 5px 5px 5px;
+    border: #999999 1px solid;
+    min-height: 60px;
+    }
+
+.clear-floated	  { clear: both; height: 1px; font-size: 1px; line-height: 1px; padding: 0; margin: 0; }
